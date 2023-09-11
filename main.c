@@ -3,11 +3,13 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#include "Vec2/Vec2.h"
+
 typedef struct {
     int* tiles;
 } Map;
 
-Map InjestMap(char* mapFileName) {
+void PrintMap(char* mapFileName) {
     FILE* mapFile = fopen(mapFileName, "r");
 
     if (mapFile == NULL) {
@@ -29,7 +31,16 @@ Map InjestMap(char* mapFileName) {
 
 int main(int argc, char* argv[]) {
 
-    InjestMap("map.csv");
+    // Test csv file reading
+    PrintMap("map.csv");
+
+    // Test Vec2 Library
+    Vec2 v1 = Vec2_New(10.643, -3.442);
+    Vec2 v2 = Vec2_New(-2.324, 4.255);
+    Vec2_Print(v1);
+    Vec2_Print(v2);
+    Vec2_Print(Vec2_Add(v1, v2));
+    Vec2_Print(Vec2_Scale(v2, 10.0));
 
     SDL_Init(SDL_INIT_EVERYTHING);
 
