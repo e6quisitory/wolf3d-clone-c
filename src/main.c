@@ -10,35 +10,6 @@
 
 int main(int argc, char** argv) {
 
-    printf("String testing...\n");
-    char* str = strdup("Hello, world");
-    printf("%s\n", str);
-    printf("%zu\n", strlen(str));
-    str = AppendCharToString(str, '!');
-    printf("%s\n", str);
-    printf("%zu\n", strlen(str));
-    printf("\n");
-
-    char* str1 = strdup("hel");
-    char* str2 = strdup("lo!");
-    char* joined = JoinStrings(str1, str2);
-    printf("String 1: %s\n", str1);
-    printf("String 2: %s\n", str2);
-    printf("Joined: %s\n", joined);
-    free(str1);
-    free(str2);
-    free(joined);
-
-
-    printf("Vec2 library testing...\n");
-    Vec2 v1 = Vec2_New(10.643, -3.442);
-    Vec2 v2 = Vec2_New(-2.324, 4.255);
-    Vec2_Print(v1);
-    Vec2_Print(v2);
-    Vec2_Print(Vec2_Add(v1, v2));
-    Vec2_Print(Vec2_Scale(v2, 10.0));
-    printf("\n");
-
     printf("CSV map file testing...\n");
     Map map = InjestMap("assets/map.csv");
     PrintMap(map);
