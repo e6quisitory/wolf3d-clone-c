@@ -44,7 +44,7 @@ Map InjestMap(char* mapFileName) {
     FILE* mapFile = fopen(mapFileName, "r");
 
     if (mapFile == NULL) {
-        printf("Map file could not be read.\n");
+        printf("Map file could not be read. Aborting.\n");
         exit(1);
     }
 

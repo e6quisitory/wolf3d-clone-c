@@ -10,15 +10,6 @@
 
 int main(int argc, char** argv) {
 
-    printf("Executable Path: %s\n", argv[0]);
-    printf("executable path str len: %zu\n", strlen(argv[0]));
-    size_t execPath_len = strlen(argv[0]);
-    char* execPath = CreateEmptyStringN(execPath_len);
-    strcpy(execPath, argv[0]);
-    char* mapPath = JoinStrings(execPath, "/assets/map.csv");
-    printf("map path: %s\n", mapPath);
-    free(execPath);
-
     printf("String testing...\n");
     char* str = strdup("Hello, world");
     printf("%s\n", str);
@@ -49,7 +40,7 @@ int main(int argc, char** argv) {
     printf("\n");
 
     printf("CSV map file testing...\n");
-    Map map = InjestMap(mapPath);
+    Map map = InjestMap("assets/map.csv");
     PrintMap(map);
 
     printf("(1,2) -> %d\n", GetTile(map, 1, 2));
