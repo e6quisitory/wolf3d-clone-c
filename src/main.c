@@ -8,7 +8,13 @@
 #include "Map/Map.h"
 #include "StringLib/StringLib.h"
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv) {   
+
+    Point2 p = Point2_New(0.5, 5.4);
+    Point2_Print(p); 
+
+    iPoint2 ip = iPoint2_New(-1, 5);
+    iPoint2_Print(ip); 
 
     printf("CSV map file testing...\n");
     Map map = InjestMap("assets/map.csv");
