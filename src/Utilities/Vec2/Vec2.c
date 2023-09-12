@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <math.h>
-
 #include "Vec2.h"
 
 /*
@@ -82,4 +79,24 @@ iVec2 iVec2_Subtract(iVec2 v1, iVec2 v2) {
 
 void iVec2_Print(iVec2 v) {
     printf("[%d, %d]\n", v.x, v.y);
+}
+
+/*
+=========================================================
+    Conversions
+=========================================================
+*/
+
+iVec2 Vec2_to_iVec2(Vec2 v) {
+    iVec2 conv;
+    conv.x = (int)v.x;
+    conv.y = (int)v.y;
+    return conv;
+}
+
+Vec2 iVec2_to_Vec2(iVec2 v) {
+    Vec2 conv;
+    conv.x = (double)v.x;
+    conv.y = (double)v.y;
+    return conv;
 }

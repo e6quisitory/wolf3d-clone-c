@@ -1,12 +1,4 @@
-#include <SDL2/SDL.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <string.h>
-
-#include "Vec2/Vec2.h"
 #include "Map/Map.h"
-#include "StringLib/StringLib.h"
 
 int main(int argc, char** argv) {   
 

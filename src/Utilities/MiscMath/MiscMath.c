@@ -1,10 +1,7 @@
-#include <math.h>
-#include <stdbool.h>
-
 #include "MiscMath.h"
 
 double GetDecimal(const double d) {
-    double d_abs = abs(d);
+    double d_abs = fabs(d);
     return d_abs - floor(d_abs);
 }
 

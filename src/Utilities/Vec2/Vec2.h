@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 =========================================================
     Vec2
@@ -53,10 +55,18 @@ void     iVec2_Print     (iVec2 v);
 */
 
 typedef iVec2 iPoint2;
-#define iPoint2_New      iVec2_New
-#define iPoint_Add       iVec2_Add
-#define iPoint2_Subtract iVec2_Subtract
-#define iPoint2_Print    iVec2_Print
+#define iPoint2_New       iVec2_New
+#define iPoint_Add        iVec2_Add
+#define iPoint2_Subtract  iVec2_Subtract
+#define iPoint2_Print     iVec2_Print
 
+/*
+=========================================================
+    Conversions
+=========================================================
+*/
 
-
+iVec2 Vec2_to_iVec2  (Vec2 v);
+Vec2  iVec2_to_Vec2  (iVec2 v);
+#define Point2_to_iPoint2  Vec2_to_iVec2
+#define iPoint2_to_Point2  iVec2_to_Vec2

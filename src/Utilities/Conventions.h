@@ -1,3 +1,5 @@
+#pragma once
+
 typedef enum {
     X_DIR_EAST = 1,
     X_DIR_WEST = -1,

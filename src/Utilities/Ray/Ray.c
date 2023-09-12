@@ -1,8 +1,4 @@
-#include <math.h>
-
 #include "Ray.h"
-#include "../Conventions.h"
-#include "../MiscMath/MiscMath.h"
 
 Ray Ray_New(Point2 orgn, Vec2 dir) {
     Ray r;
@@ -32,11 +28,11 @@ Ray Ray_New(Point2 orgn, Vec2 dir) {
 }
 
 double Ray_xAt(const Ray r, const double y) {
-    r.origin.x + ((y-r.origin.y)/r.direction.y)*r.direction.x;
+    return r.origin.x + ((y-r.origin.y)/r.direction.y)*r.direction.x;
 }
 
 double Ray_yAt(const Ray r, const double x) {
-    r.origin.y + ((x-r.origin.x)/r.direction.x)*r.direction.y;
+    return r.origin.y + ((x-r.origin.x)/r.direction.x)*r.direction.y;
 }
 
 int Ray_nextX(const Ray r, const Point2 currPt){
@@ -66,19 +62,23 @@ int Ray_nextY(const Ray r, const Point2 currPt){
 }
 
 double Ray_RayDist_dx(const Ray r, const double dx) {
-    return abs(dx)*r.dxConst;
+    return fabs(dx)*r.dxConst;
 }
 
 double Ray_RayDist_dy(const Ray r, const double dy) {
-    return abs(dy)*r.dyConst;
+    return fabs(dy)*r.dyConst;
 }
 
-// Point2 Ray_NextXIntrscPoint(const Ray r, const Point2 currPt) {
+Point2 Ray_NextXIntrscPoint(const Ray r, const Point2 currPt) {
+    double nextXVal = Ray_nextX(r, currPt);
+    return Point2_New(nextXVal, Ray_yAt(r, nextXVal));
+}
 
-// }
+Point2 Ray_NextYIntrscPoint(const Ray r, const Point2 currPt) {
+    double nextYVal = Ray_nextY(r, currPt);
+    return Point2_New(Ray_xAt(r, nextYVal), nextYVal);
+}
 
-
-
-Point2  Ray_NextYIntrscPoint  (const Ray r, const Point2 currPt);
-double  Ray_DistToPoint       (const Ray r, const Point2 pt);
-
+double Ray_DistToPoint(const Ray r, const Point2 pt) {
+    return Ray_RayDist_dx(r, pt.x - r.origin.x);
+}

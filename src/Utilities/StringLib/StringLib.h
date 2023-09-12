@@ -1,3 +1,5 @@
+#pragma once
+
 char*  CreateEmptyString    ();
 char*  CreateEmptyStringN   (size_t len);
 char*  AppendCharToString   (char* str, char toAppend);

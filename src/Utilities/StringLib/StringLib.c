@@ -1,6 +1,3 @@
-#include <stdlib.h>
-#include <string.h>
-
 #include "StringLib.h"
 
 char* CreateEmptyString() {
