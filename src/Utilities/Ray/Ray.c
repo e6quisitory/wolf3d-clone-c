@@ -1,10 +1,10 @@
 #include "Ray.h"
 
-Ray Ray_New(Point2 orgn, Vec2 dir) {
+Ray Ray_New(Point2 origin, Vec2 dir) {
     Ray r;
     
-    r.origin = orgn;
-    r.direction = dir;
+    r.origin = origin;
+    r.direction = Vec2_UnitVector(dir);
     r.dxConst = sqrt(1.0+pow(dir.y/dir.x, 2.0));
     r.dyConst = sqrt(1.0+pow(dir.x/dir.y, 2.0));
     

@@ -34,6 +34,13 @@ Vec2 Vec2_Scale(Vec2 v, double scaleFactor) {
     return result;
 }
 
+Vec2 Vec2_Negative(Vec2 v) {
+    Vec2 neg;
+         neg.x = -v.x;
+         neg.y = -v.y;
+    return neg;
+}
+
 double Vec2_Dot(Vec2 v1, Vec2 v2) {
     return v1.x*v2.x + v1.y*v2.y;
 }
@@ -75,6 +82,13 @@ iVec2 iVec2_Subtract(iVec2 v1, iVec2 v2) {
          result.x = v1.x - v2.x;
          result.y = v1.y - v2.y;
     return result;
+}
+
+iVec2 iVec2_Negative(iVec2 v) {
+    iVec2 neg;
+          neg.x = -v.x;
+          neg.y = -v.y;
+    return neg;
 }
 
 void iVec2_Print(iVec2 v) {

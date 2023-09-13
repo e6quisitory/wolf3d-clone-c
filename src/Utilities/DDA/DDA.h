@@ -18,4 +18,10 @@ typedef struct {
     double     widthPercent;
 } RayCursor;
 
-RayCursor RayCursor_New(Ray ray, Point2 hitPoint);
+RayCursor   RC_New                   (Ray ray, Point2 hitPoint);
+void        RC_CalculateWallHitInfo  (RayCursor* rc);
+void        RC_ClearWallHitInfo      (RayCursor* rc);
+wallType_t  RC_GetWallType           (RayCursor* rc);
+double      RC_GetWidthPercent       (RayCursor* rc);
+void        RC_GoToNextHit           (RayCursor* rc);
+void        RC_GoToNextCenterHit     (RayCursor* rc);
