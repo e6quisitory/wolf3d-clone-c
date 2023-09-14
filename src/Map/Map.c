@@ -4,8 +4,8 @@ Map EmptyMap() {
     Map map;
     map.tiles = (int*)malloc(0);
     map.numTiles = 0;
-    map.numRows = 0;
-    map.numColumns = 0;
+    map.height = 0;
+    map.width = 0;
     return map;
 }
 
@@ -20,14 +20,14 @@ void FreeMapTiles(Map* map) {
 }
 
 int GetTile(Map* map, iPoint2 coord) {
-    return map->tiles[coord.y*map->numColumns+coord.x];
+    return map->tiles[coord.y*map->width + coord.x];
 }
 
 void PrintMap(Map* map) {
-    printf("Rows: %d, Columns: %d\n", map->numRows, map->numColumns);
-    for (int i = map->numRows-1; i >= 0; --i) {
-        for (int j = 0; j < map->numColumns; ++j) {
-            printf("%d", map->tiles[i*map->numColumns+j]);
+    printf("Rows: %d, Columns: %d\n", map->height, map->width);
+    for (int i = map->height - 1; i >= 0; --i) {
+        for (int j = 0; j < map->width; ++j) {
+            printf("%d", map->tiles[i*map->width + j]);
         }
         printf("\n");
     }
@@ -57,12 +57,12 @@ Map InjestMap(char* mapFileName) {
             goto PushCurrentTileInfo;
         } else if (isNewline) {
             if (cellReadInProgress == true) {
-                ++map.numRows;
+                ++map.height;
                 goto PushCurrentTileInfo;
             } else
                 continue;
         } else if (isEOF) {
-            ++map.numRows;
+            ++map.height;
             fclose(mapFile);
             goto PushCurrentTileInfoAndExitLoop;
         } else if (cellReadInProgress == true) {
@@ -70,8 +70,8 @@ Map InjestMap(char* mapFileName) {
         } else {
             cellReadInProgress = true;
             currCellString = AppendCharToString(currCellString, currentChar);
-            if (map.numRows == 0)
-                ++map.numColumns;
+            if (map.height == 0)
+                ++map.width;
         }
 
         goto LoopEnd;
@@ -95,12 +95,12 @@ Map InjestMap(char* mapFileName) {
     free(currCellString);
     
     Map vFlipMap = EmptyMap();
-        vFlipMap.numRows = map.numRows;
-        vFlipMap.numColumns = map.numColumns;
+        vFlipMap.height = map.height;
+        vFlipMap.width = map.width;
 
-    for (int i = map.numRows-1; i >= 0; --i) {
-        for (int j = 0; j < map.numColumns; ++j) {
-            AppendTile(&vFlipMap, map.tiles[i*map.numColumns+j]);
+    for (int i = map.height - 1; i >= 0; --i) {
+        for (int j = 0; j < map.width; ++j) {
+            AppendTile(&vFlipMap, map.tiles[i*map.width + j]);
         }
     }
     FreeMapTiles(&map);

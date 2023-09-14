@@ -8,6 +8,7 @@ void Player_UpdateVectors(Player* p) {
 
 Player Player_New(Point2 location) {
     Player p;
+    p.location = location;
     p.viewDir = UnitVector(Point2_New(1.0, 1.0));
     Player_UpdateVectors(&p);
     return p;
@@ -67,7 +68,8 @@ void Player_Update(Player* p, InputsBuffer* buffer, Map* map) {
             break;
         }
         case MOVE_NONE:
-            exit(1);
+            // Do nothing
+            break;
     }
     Player_MoveIfValid(p, map, proposedLoc);
 

@@ -3,8 +3,8 @@
 typedef struct {
     int* tiles;
     int numTiles;
-    int numRows;
-    int numColumns;
+    int height;
+    int width;
 } Map;
 
 Map   EmptyMap      ();

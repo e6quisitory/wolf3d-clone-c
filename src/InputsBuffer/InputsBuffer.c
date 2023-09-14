@@ -11,7 +11,7 @@ void BufferInputs(InputsBuffer* buffer, const Uint8* keyboardState) {
     /************************* Mouse movement *************************/
 
     SDL_Event currPendingEvent;
-    int currXrel;
+    int currXrel = 0;
     while (SDL_PollEvent(&currPendingEvent)) {
         if (currPendingEvent.type == SDL_MOUSEMOTION) {
             currXrel = currPendingEvent.motion.xrel;

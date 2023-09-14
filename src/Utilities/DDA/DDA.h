@@ -25,3 +25,4 @@ wallType_t  RC_GetWallType           (RayCursor* rc);
 double      RC_GetWidthPercent       (RayCursor* rc);
 void        RC_GoToNextHit           (RayCursor* rc);
 void        RC_GoToNextCenterHit     (RayCursor* rc);
+double      RC_GetDistToHitPoint     (RayCursor* rc);
