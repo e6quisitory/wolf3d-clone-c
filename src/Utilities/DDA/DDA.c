@@ -1,8 +1,8 @@
 #include "DDA.h"
 
-RayCursor RC_New(Ray ray, Point2 hitPoint) {
+RayCursor RC_New(Ray* ray, Point2 hitPoint) {
     RayCursor rc;
-    rc.ray = ray;
+    rc.ray = *ray;
     rc.hitPoint = hitPoint;
     rc.hitTile = Point2_to_iPoint2(hitPoint);
     rc.widthPercent = -1.0;
@@ -53,11 +53,11 @@ double RC_GetWidthPercent(RayCursor* rc) {
 }
 
 void RC_GoToNextHit(RayCursor* rc) {
-    Point2 nextX = Ray_NextXIntrscPoint(rc->ray, rc->hitPoint);
-    Point2 nextY = Ray_NextYIntrscPoint(rc->ray, rc->hitPoint);
+    Point2 nextX = Ray_NextXIntrscPoint(&rc->ray, rc->hitPoint);
+    Point2 nextY = Ray_NextYIntrscPoint(&rc->ray, rc->hitPoint);
 
-    double distNextX = Ray_DistToPoint(rc->ray, nextX);
-    double distNextY = Ray_DistToPoint(rc->ray, nextY);
+    double distNextX = Ray_DistToPoint(&rc->ray, nextX);
+    double distNextY = Ray_DistToPoint(&rc->ray, nextY);
 
     if (distNextX < distNextY) {
         rc->hitPoint = nextX;
@@ -90,11 +90,11 @@ void RC_GoToNextCenterHit(RayCursor* rc) {
         vecToCenter.y = (double)(rc->ray.yDir) / 2.0;
     }
 
-    *rc = RC_New(rc->ray, Point2_Add(rc->hitPoint, vecToCenter));
+    *rc = RC_New(&rc->ray, Point2_Add(rc->hitPoint, vecToCenter));
     RC_CalculateWallHitInfo(rc);
 }
 
 double RC_GetDistToHitPoint(RayCursor* rc) {
-    return Ray_DistToPoint(rc->ray, rc->hitPoint);
+    return Ray_DistToPoint(&rc->ray, rc->hitPoint);
 }
 

@@ -4,7 +4,7 @@ Ray Ray_New(Point2 origin, Vec2 dir) {
     Ray r;
     
     r.origin = origin;
-    r.direction = Vec2_UnitVector(dir);
+    r.direction = UnitVector(dir);
     r.dxConst = sqrt(1.0+pow(dir.y/dir.x, 2.0));
     r.dyConst = sqrt(1.0+pow(dir.x/dir.y, 2.0));
     
@@ -27,58 +27,57 @@ Ray Ray_New(Point2 origin, Vec2 dir) {
     return r;
 }
 
-double Ray_xAt(const Ray r, const double y) {
-    return r.origin.x + ((y-r.origin.y)/r.direction.y)*r.direction.x;
+double Ray_xAt(Ray *r, double y) {
+    return r->origin.x + ((y-r->origin.y)/r->direction.y)*r->direction.x;
 }
 
-double Ray_yAt(const Ray r, const double x) {
-    return r.origin.y + ((x-r.origin.x)/r.direction.x)*r.direction.y;
+double Ray_yAt(Ray *r, double x) {
+    return r->origin.y + ((x-r->origin.x)/r->direction.x)*r->direction.y;
 }
 
-int Ray_nextX(const Ray r, const Point2 currPt){
+int Ray_nextX(Ray* r, Point2 currPt){
     if (!IsInteger(currPt.x)) {
-        switch (r.xDir) {
+        switch (r->xDir) {
             case X_DIR_EAST: return (int)ceil(currPt.x);
             case X_DIR_WEST: return (int)floor(currPt.x);
             case X_DIR_NONE: return -1;
-
         }
     } else {
-        return (int)currPt.x + r.xDir;
+        return (int)currPt.x + r->xDir;
     }
 }
 
-int Ray_nextY(const Ray r, const Point2 currPt){
+int Ray_nextY(Ray* r, Point2 currPt){
     if (!IsInteger(currPt.y)) {
-        switch (r.yDir) {
+        switch (r->yDir) {
             case Y_DIR_NORTH: return (int)ceil(currPt.y);
             case Y_DIR_SOUTH: return (int)floor(currPt.y);
             case Y_DIR_NONE:  return -1;
 
         }
     } else {
-        return (int)currPt.y + r.yDir;
+        return (int)currPt.y + r->yDir;
     }
 }
 
-double Ray_RayDist_dx(const Ray r, const double dx) {
-    return fabs(dx)*r.dxConst;
+double Ray_RayDist_dx(Ray* r, double dx) {
+    return fabs(dx)*r->dxConst;
 }
 
-double Ray_RayDist_dy(const Ray r, const double dy) {
-    return fabs(dy)*r.dyConst;
+double Ray_RayDist_dy(Ray* r, double dy) {
+    return fabs(dy)*r->dyConst;
 }
 
-Point2 Ray_NextXIntrscPoint(const Ray r, const Point2 currPt) {
+Point2 Ray_NextXIntrscPoint(Ray* r, Point2 currPt) {
     double nextXVal = Ray_nextX(r, currPt);
     return Point2_New(nextXVal, Ray_yAt(r, nextXVal));
 }
 
-Point2 Ray_NextYIntrscPoint(const Ray r, const Point2 currPt) {
+Point2 Ray_NextYIntrscPoint(Ray* r, Point2 currPt) {
     double nextYVal = Ray_nextY(r, currPt);
     return Point2_New(Ray_xAt(r, nextYVal), nextYVal);
 }
 
-double Ray_DistToPoint(const Ray r, const Point2 pt) {
-    return Ray_RayDist_dx(r, pt.x - r.origin.x);
+double Ray_DistToPoint(Ray* r, Point2 pt) {
+    return Ray_RayDist_dx(r, pt.x - r->origin.x);
 }

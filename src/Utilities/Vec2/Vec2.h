@@ -19,7 +19,8 @@ Vec2    Vec2_Negative    (Vec2 v);
 double  Vec2_Dot         (Vec2 v1, Vec2 v2);
 void    Vec2_Print       (Vec2 v);
 double  Vec2_Length      (Vec2 v);
-Vec2    Vec2_UnitVector  (Vec2 v);
+Vec2    Vec2_Rotate      (Vec2 v, double rad);
+Vec2    UnitVector       (Vec2 v);
 
 /*
 =========================================================
@@ -28,10 +29,10 @@ Vec2    Vec2_UnitVector  (Vec2 v);
 */
 
 typedef Vec2 Point2;
-#define Point2_New      Vec2_New
+#define Point2_New       Vec2_New
 #define Point2_Add       Vec2_Add
-#define Point2_Subtract Vec2_Subtract
-#define Point2_Print    Vec2_Print
+#define Point2_Subtract  Vec2_Subtract
+#define Point2_Print     Vec2_Print
 
 /*
 =========================================================
@@ -58,7 +59,7 @@ void     iVec2_Print     (iVec2 v);
 
 typedef iVec2 iPoint2;
 #define iPoint2_New       iVec2_New
-#define iPoint2_Add        iVec2_Add
+#define iPoint2_Add       iVec2_Add
 #define iPoint2_Subtract  iVec2_Subtract
 #define iPoint2_Print     iVec2_Print
 

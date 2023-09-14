@@ -53,7 +53,14 @@ double Vec2_Length(Vec2 v) {
     return sqrt(pow(v.x, 2.0) + pow(v.y, 2.0));
 }
 
-Vec2 Vec2_UnitVector(Vec2 v) {
+Vec2 Vec2_Rotate(Vec2 v, double rad) {
+    Vec2 rotated;
+    rotated.x = v.x*cos(rad) - v.y*sin(rad);
+    rotated.y = v.x*sin(rad) + v.y*cos(rad);
+    return rotated;
+}
+
+Vec2 UnitVector(Vec2 v) {
     return Vec2_Scale(v, 1.0/Vec2_Length(v));
 }
 

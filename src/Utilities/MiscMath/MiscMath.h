@@ -1,5 +1,5 @@
 #pragma once
 
-double  GetDecimal        (const double d);
-double  IsInteger         (const double d);
-double  DegreesToRadians  (const double degrees);
+double  GetDecimal        (double d);
+double  IsInteger         (double d);
+double  DegreesToRadians  (double degrees);

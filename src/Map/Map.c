@@ -9,26 +9,25 @@ Map EmptyMap() {
     return map;
 }
 
-Map AppendTile(Map map, int newTile) {
-    map.tiles = (int*)realloc(map.tiles, (map.numTiles+1)*sizeof(int));
-    map.tiles[map.numTiles] = newTile;
-    ++map.numTiles;
-    return map;
+void AppendTile(Map* map, int newTile) {
+    map->tiles = (int*)realloc(map->tiles, (map->numTiles+1)*sizeof(int));
+    map->tiles[map->numTiles] = newTile;
+    ++map->numTiles;
 }
 
-void DestroyMap(Map map) {
-    free(map.tiles);
+void FreeMapTiles(Map* map) {
+    free(map->tiles);
 }
 
-int GetTile(Map map, int x, int y) {
-    return map.tiles[y*map.numColumns+x];
+int GetTile(Map* map, iPoint2 coord) {
+    return map->tiles[coord.y*map->numColumns+coord.x];
 }
 
-void PrintMap(Map map) {
-    printf("Rows: %d, Columns: %d\n", map.numRows, map.numColumns);
-    for (int i = map.numRows-1; i >= 0; --i) {
-        for (int j = 0; j < map.numColumns; ++j) {
-            printf("%d", map.tiles[i*map.numColumns+j]);
+void PrintMap(Map* map) {
+    printf("Rows: %d, Columns: %d\n", map->numRows, map->numColumns);
+    for (int i = map->numRows-1; i >= 0; --i) {
+        for (int j = 0; j < map->numColumns; ++j) {
+            printf("%d", map->tiles[i*map->numColumns+j]);
         }
         printf("\n");
     }
@@ -48,7 +47,7 @@ Map InjestMap(char* mapFileName) {
     bool cellReadInProgress = false;
 
     while (true) {
-        char currentChar = fgetc(mapFile);
+        char currentChar = (char)fgetc(mapFile);
 
         bool isComma   = currentChar == ',';
         bool isNewline = currentChar == '\r' || currentChar == '\n';
@@ -79,14 +78,14 @@ Map InjestMap(char* mapFileName) {
 
         PushCurrentTileInfo: {
             cellReadInProgress = false;
-            map = AppendTile(map, currCellString[0] - '0');
+            AppendTile(&map, currCellString[0] - '0');
             currCellString = ClearString(currCellString);
             goto LoopEnd;
         }
 
         PushCurrentTileInfoAndExitLoop: {
             cellReadInProgress = false;
-            map = AppendTile(map, currCellString[0] - '0');
+            AppendTile(&map, currCellString[0] - '0');
             goto Exit;
         }
 
@@ -101,10 +100,10 @@ Map InjestMap(char* mapFileName) {
 
     for (int i = map.numRows-1; i >= 0; --i) {
         for (int j = 0; j < map.numColumns; ++j) {
-            vFlipMap = AppendTile(vFlipMap, map.tiles[i*map.numColumns+j]);
+            AppendTile(&vFlipMap, map.tiles[i*map.numColumns+j]);
         }
     }
-    DestroyMap(map);
+    FreeMapTiles(&map);
 
     return vFlipMap;
 }
