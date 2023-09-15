@@ -20,7 +20,7 @@ However, I think it shouldn't be too much of a challenge; even though C's featur
 Have `cmake`, `ninja` and [SDL2](https://github.com/libsdl-org/SDL/releases) installed. Then, after cloning this repo, from the root of it, run the following:
 ```
 cd build
-cmake -GNinja ../src
+cmake -GNinja ..
 ninja
-./wolf3d-clone-c
+./c-raycaster
 ```

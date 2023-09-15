@@ -35,10 +35,7 @@ int main(int argc, char** argv) {
     Map map = InjestMap("assets/map.csv");
     Multimedia multimedia = Multimedia_Init(1280, 720, 90.0);
     Player player = Player_New(Point2_New(8.01, 2.56));
-    Vec2_Print(player.location);
-    iPoint2_Print(Point2_to_iPoint2(player.location));
-    printf("%d\n", GetTile(&map, Point2_to_iPoint2(player.location)));
-    InputsBuffer buffer;
+    InputsBuffer buffer = EmptyInputsBuffer();
     const Uint8* keyboardState = SDL_GetKeyboardState(NULL);
 
     while (1) {

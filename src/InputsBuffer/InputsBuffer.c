@@ -6,6 +6,18 @@ int GetXrel() {
     return currXrel;
 }
 
+InputsBuffer EmptyInputsBuffer() {
+    InputsBuffer buffer;
+    
+    buffer.lookCommand = LOOK_NONE;
+    buffer.moveCommand = MOVE_NONE;
+    buffer.quit = false;
+    buffer.mouseAbsXrel = 0;
+    buffer.prevXrel = 0;
+
+    return buffer;
+}
+
 void BufferInputs(InputsBuffer* buffer, const Uint8* keyboardState) {
 
     /************************* Mouse movement *************************/
@@ -52,10 +64,6 @@ void BufferInputs(InputsBuffer* buffer, const Uint8* keyboardState) {
     else if   (west)        buffer->moveCommand  = MOVE_WEST;
     else if   (east)        buffer->moveCommand  = MOVE_EAST;
     else                    buffer->moveCommand  = MOVE_NONE;
-
-    /************************* Spacebar (to open doors) *************************/
-
-    buffer->doorCommand = keyboardState[SDL_SCANCODE_SPACE] ? DOOR_OPEN : DOOR_NONE;
 
     /************************* Escape (to exit game) *************************/
 

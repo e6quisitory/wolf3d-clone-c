@@ -11,5 +11,5 @@ typedef struct {
     Vec2   south;
 } Player;
 
-Player Player_New     (Point2 location);
-void   Player_Update  (Player* p, InputsBuffer* buffer, Map* map);
+Player  Player_New     (Point2 location);
+void    Player_Update  (Player* p, InputsBuffer* buffer, Map* map);

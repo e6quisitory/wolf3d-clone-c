@@ -20,15 +20,9 @@ typedef enum {
     MOVE_NONE
 } moveCommand_t;
 
-typedef enum {
-    DOOR_OPEN,
-    DOOR_NONE
-} doorCommand_t;
-
 typedef struct {
     lookCommand_t lookCommand;
     moveCommand_t moveCommand;
-    doorCommand_t doorCommand;
     bool quit;
 
     // Mouse related
@@ -36,4 +30,5 @@ typedef struct {
     int prevXrel;
 } InputsBuffer;
 
-void BufferInputs(InputsBuffer* buffer, const Uint8* keyboardState);
+InputsBuffer  EmptyInputsBuffer  ();
+void          BufferInputs       (InputsBuffer* buffer, const Uint8* keyboardState);
