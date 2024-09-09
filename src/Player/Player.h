@@ -9,7 +9,8 @@ typedef struct {
     Vec2   east;
     Vec2   west;
     Vec2   south;
+    int    refresh_rate;
 } Player;
 
-Player  Player_New     (Point2 location);
+Player  Player_New     (Point2 location, int refresh_rate);
 void    Player_Update  (Player* p, InputsBuffer* buffer, Map* map);

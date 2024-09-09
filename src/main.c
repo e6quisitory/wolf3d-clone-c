@@ -34,7 +34,7 @@ void RenderFrame(Multimedia* mm, Player* p, Map* map) {
 int main(int argc, char** argv) {
     Map map = InjestMap("assets/map.csv");
     Multimedia multimedia = Multimedia_Init(1280, 720, 90.0);
-    Player player = Player_New(Point2_New(8.01, 2.56));
+    Player player = Player_New(Point2_New(8.01, 2.56), multimedia.refresh_rate);
     InputsBuffer buffer = EmptyInputsBuffer();
     const Uint8* keyboardState = SDL_GetKeyboardState(NULL);
 

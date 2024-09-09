@@ -1,10 +1,11 @@
 #pragma once
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 typedef struct {
     int windowWidth;
     int windowHeight;
+    int refresh_rate;
 
     double fov;
     double* castingRayAngles;

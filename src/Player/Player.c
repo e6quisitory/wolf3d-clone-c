@@ -6,10 +6,11 @@ void Player_UpdateVectors(Player* p) {
     p->south = Vec2_Rotate(p->viewDir, M_PI);
 }
 
-Player Player_New(Point2 location) {
+Player Player_New(Point2 location, int refresh_rate) {
     Player p;
     p.location = location;
     p.viewDir = UnitVector(Point2_New(1.0, 1.0));
+    p.refresh_rate = refresh_rate;
     Player_UpdateVectors(&p);
     return p;
 }
@@ -24,7 +25,7 @@ void Player_Update(Player* p, InputsBuffer* buffer, Map* map) {
 
     /************************* Move player *************************/
 
-    static const double moveIncr = 0.08;
+    const double moveIncr = 0.1*(60.0/p->refresh_rate);
     Point2 proposedLoc = p->location;
     switch (buffer->moveCommand) {
         case MOVE_NORTH:

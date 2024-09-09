@@ -18,6 +18,15 @@ Multimedia Multimedia_Init(int width, int height, double fov) {
     SDL_ShowCursor(SDL_DISABLE);
     SDL_SetRelativeMouseMode(SDL_TRUE);
 
+    // Get the refresh rate
+    SDL_DisplayMode mode;
+    if (SDL_GetDisplayMode(SDL_GetWindowDisplayIndex(mm.window), 0, &mode) == 0) {
+        mm.refresh_rate = mode.refresh_rate;
+    } else {
+        // If we can't get the refresh rate, set a default value (e.g., 60)
+        mm.refresh_rate = 60;
+    }
+
     // Calculate casting ray angles
     double projectionPlaneWidth = 2 * tan(DegreesToRadians(fov / 2));
     double segmentLength = projectionPlaneWidth / mm.windowWidth;
