@@ -1,12 +1,12 @@
 # Raycaster in C
 
-I previously implemented a Wolfenstein 3D renderer from scratch in [C++](https://github.com/e6quisitory/wolf3d-clone). I then moved my implementation over to [Rust](https://github.com/e6quisitory/wolf3d-clone-rs), and plan to finish the project in Rust.
+I previously implemented a Wolfenstein 3D renderer from scratch in [C++](https://github.com/mhamzaqayyum/wolf3d-clone). I then moved my implementation over to [Rust](https://github.com/mhamzaqayyum/wolf3d-clone-rs), and plan to finish the project in Rust.
 
 This repo is a port of the basic raycasting code from that project over to plain vanilla C. The point of doing this was as a learning exercise to brush up on my knowledge of C. I had started a semester at school where I was taking a couple C-programming-heavy classes. I had experience with C++ and Rust, but very little in plain old C. Thus, porting the code over was a good refresher.
 
 ## Demo
 
-https://github.com/e6quisitory/wolf3d-clone-c/assets/25702188/0cf7ded5-8664-4564-9fed-1d40833369ba
+https://github.com/mhamzaqayyum/wolf3d-clone-c/assets/25702188/0cf7ded5-8664-4564-9fed-1d40833369ba
 
 ## A Game of Simple Structs & Functions
 
