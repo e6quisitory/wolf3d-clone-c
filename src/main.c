@@ -13,7 +13,7 @@ void RenderFrame(Multimedia* mm, Player* p, Map* map) {
             RC_GoToNextHit(&rc);
             if (GetTile(map, rc.hitTile) == 1) {
                 double dist = RC_GetDistToHitPoint(&rc);
-                double renderHeight = 550.0/(dist*mm->castingRayAngles_cos[x]);
+                double renderHeight = mm->renderHeightProprConst/(dist*mm->castingRayAngles_cos[x]);
                 if (RC_GetWallType(&rc) == WALL_TYPE_VERTICAL) {
                     SDL_SetRenderDrawColor( mm->renderer, 200, 0, 0, 255 );
                 } else {

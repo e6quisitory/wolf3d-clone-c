@@ -27,6 +27,8 @@ Multimedia Multimedia_Init(int width, int height, double fov) {
         mm.refresh_rate = 60;
     }
 
+    mm.renderHeightProprConst = mm.windowWidth / ((16.0 / 9.0) * (fov / 72.0));
+
     // Calculate casting ray angles
     double projectionPlaneWidth = 2 * tan(DegreesToRadians(fov / 2));
     double segmentLength = projectionPlaneWidth / mm.windowWidth;

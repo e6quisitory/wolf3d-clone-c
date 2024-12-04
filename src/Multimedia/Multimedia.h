@@ -7,6 +7,8 @@ typedef struct {
     int windowHeight;
     int refresh_rate;
 
+    double renderHeightProprConst;
+
     double fov;
     double* castingRayAngles;
     double* castingRayAngles_cos;
