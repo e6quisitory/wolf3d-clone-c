@@ -17,10 +17,10 @@ In C, it's a game of simple structs and functions, i.e. a much more limited feat
 However, I think it shouldn't be too much of a challenge; even though C's feature set is limited, it is so simple and clean that program designs/architectures are easy to come up with. Sure, you might have to write a bit more code compared with using the powerful abstraction features in C++ and Rust, but, you can certainly still accomplish what you're trying to, and, honestly, your code and design/architecture will probably be simpler and much easier to keep track of and maintain.
 
 ## Build Instructions
-Have `cmake`, `ninja` and [SDL2](https://github.com/libsdl-org/SDL/releases) installed. Then, after cloning this repo, from the root of it, run the following:
+Have `cmake` and [SDL2](https://github.com/libsdl-org/SDL/releases) installed. Then, after cloning this repo, from the root of it, run the following:
 ```
 cd build
-cmake -GNinja ..
-ninja
+cmake ..
+make
 ./c-raycaster
 ```
