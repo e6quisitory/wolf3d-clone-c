@@ -1,7 +1,5 @@
 #pragma once
 
-#include <stdbool.h>
-
 typedef enum {
     LOOK_RIGHT,
     LOOK_LEFT,
