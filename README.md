@@ -16,8 +16,16 @@ In C, it's a game of simple structs and functions, i.e. a much more limited feat
 
 However, I think it shouldn't be too much of a challenge; even though C's feature set is limited, it is so simple and clean that program designs/architectures are easy to come up with. Sure, you might have to write a bit more code compared with using the powerful abstraction features in C++ and Rust, but, you can certainly still accomplish what you're trying to, and, honestly, your code and design/architecture will probably be simpler and much easier to keep track of and maintain.
 
-## Build Instructions
-Have `cmake` and [SDL2](https://github.com/libsdl-org/SDL/releases) installed. Then, after cloning this repo, from the root of it, run the following:
+## macOS Build Instructions
+```
+brew install sdl2 sdl2_image cmake
+```
+Might need these in your `~/.zshrc`:
+```
+export LIBRARY_PATH="$LIBRARY_PATH:/opt/homebrew/lib"
+export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
+```
+Then, from the root of this repo, run the following:
 ```
 cd build
 cmake ..
